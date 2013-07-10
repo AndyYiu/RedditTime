@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/RedditTime/RedditTime.iml" filepath="$PROJECT_DIR$/RedditTime/RedditTime.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RedditTimeProject.iml" filepath="$PROJECT_DIR$/RedditTimeProject.iml" />
+    </modules>
+  </component>
+</project>
+

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="details">#808080</color>
+    <color name="score">#808080</color>
+    <color name="upvote">#FF2400</color>
+    <color name="downvote">#659EC7</color>
+</resources>
