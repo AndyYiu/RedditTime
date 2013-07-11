@@ -16,7 +16,7 @@ public class MainActivity extends FragmentActivity {
     }
 
     void addFragment() {
-        getSupportFragmentManager().beginTransaction().add(R.id.fragments_holder, PostsFragment.newInstance("All")).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.fragments_holder, PostsFragment.newInstance("Gaming")).commit();
     }
 
 }
