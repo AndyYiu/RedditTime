@@ -9,6 +9,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
@@ -16,24 +17,22 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+
 /**
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
 public class LoginActivity extends Activity {
-    /**
-     * A dummy authentication store containing known user names and passwords.
-     * TODO: remove after connecting to a real authentication system.
-     */
-    private static final String[] DUMMY_CREDENTIALS = new String[]{
-            "foo@example.com:hello",
-            "bar@example.com:world"
-    };
 
-    /**
-     * The default email to populate the email field with.
-     */
-    public static final String EXTRA_EMAIL = "com.example.android.authenticatordemo.extra.EMAIL";
+    //Login api
+    private final String REDDIT_LOGIN_URL = "https://ssl.reddit.com/api/login";
+    private String redditCookie = "";
 
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
@@ -58,7 +57,7 @@ public class LoginActivity extends Activity {
         setContentView(R.layout.activity_login);
 
         // Set up the login form.
-        mEmail = getIntent().getStringExtra(EXTRA_EMAIL);
+        //mEmail = getIntent().getStringExtra(EXTRA_EMAIL);
         mEmailView = (EditText) findViewById(R.id.email);
         mEmailView.setText(mEmail);
 
@@ -120,7 +119,7 @@ public class LoginActivity extends Activity {
             mPasswordView.setError(getString(R.string.error_field_required));
             focusView = mPasswordView;
             cancel = true;
-        } else if (mPassword.length() < 4) {
+        } else if (mPassword.length() < 3) {
             mPasswordView.setError(getString(R.string.error_invalid_password));
             focusView = mPasswordView;
             cancel = true;
@@ -192,26 +191,36 @@ public class LoginActivity extends Activity {
      * the user.
      */
     public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
+
         @Override
         protected Boolean doInBackground(Void... params) {
             // TODO: attempt authentication against a network service.
 
-            try {
-                // Simulate network access.
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
+            HttpURLConnection hcon = getConnection(REDDIT_LOGIN_URL);
+            hcon.setRequestProperty("Cookie", redditCookie);
+            if(hcon == null) {
                 return false;
             }
-
-            for (String credential : DUMMY_CREDENTIALS) {
-                String[] pieces = credential.split(":");
-                if (pieces[0].equals(mEmail)) {
-                    // Account exists, return true if the password matches.
-                    return pieces[1].equals(mPassword);
-                }
+            String data = "user=" + mEmail + "&passwd=" + mPassword;
+            if(!writeToConnection(hcon, data)) {
+                Log.e("Error", "Could not write to connection");
+                return false;
+            }
+            String cookie = hcon.getHeaderField("set-cookie");
+            if(cookie == null) {
+                Log.e("Error", "Null cookie");
+                return false;
+            }
+            cookie = cookie.split(";")[0];
+            if(cookie.startsWith("reddit_first")) {
+                Log.d("Error", "Unable to login");
+                return false;
+            } else if(cookie.startsWith("reddit_session")) {
+                Log.d("Success", cookie);
+                redditCookie = cookie;
+                return true;
             }
 
-            // TODO: register the new account here.
             return true;
         }
 
@@ -234,6 +243,40 @@ public class LoginActivity extends Activity {
         protected void onCancelled() {
             mAuthTask = null;
             showProgress(false);
+        }
+    }
+
+    //Opens up a connection
+    private HttpURLConnection getConnection(String url) {
+        URL u = null;
+        try {
+            u = new URL(url);
+        } catch (MalformedURLException e) {
+            Log.d("Invalid URL: ", url);
+            return null;
+        }
+        HttpURLConnection connection = null;
+        try {
+            connection = (HttpURLConnection) u.openConnection();
+        } catch(IOException e) {
+            Log.d("Unable to connect", url);
+            return null;
+        }
+        connection.setReadTimeout(30000);
+        connection.setDoOutput(true);
+        return connection;
+    }
+
+    //Posts to the connection
+    private boolean writeToConnection(HttpURLConnection hcon, String data) {
+        try {
+            PrintWriter pw = new PrintWriter(new OutputStreamWriter(hcon.getOutputStream()));
+            pw.write(data);
+            pw.close();
+            return true;
+        } catch(IOException e) {
+            Log.d("Unable to write", e.toString());
+            return false;
         }
     }
 }

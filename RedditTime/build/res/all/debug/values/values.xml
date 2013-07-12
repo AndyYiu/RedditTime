@@ -9,9 +9,9 @@
     <color name="white">#FFFFFF</color>
 
     <string name="action_forgot_password">Recover lost password</string>
-    <string name="action_sign_in_register"><b>Sign in</b> or register</string>
+    <string name="action_sign_in_register"><b>Sign in</b></string>
     <string name="action_sign_in_short">Sign in</string>
-    <string name="app_name">Reddit Time</string>
+    <string name="app_name">redditTime</string>
     <string name="error_field_required">This field is required</string>
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_invalid_email">This username is invalid</string>

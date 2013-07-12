@@ -32,6 +32,18 @@ public class RemoteData {
 
     //Creates a string with all the data extracted from the .json
     public static String readContents (String url) {
+
+        byte[] t = MyCache.read(url);
+        String cached = null;
+        if(t != null) {
+            cached = new String(t);
+            t = null;
+        }
+        if(cached != null) {
+            Log.d("MSG", "Using cache for " + url);
+            return cached;
+        }
+
         HttpURLConnection hcon = getConnection(url);
         if(hcon == null) {
             return null;
@@ -44,6 +56,8 @@ public class RemoteData {
                 sb.append(tmp).append("\n");
             }
             br.close();
+            //Write the new data to cache
+            MyCache.write(url, sb.toString());
             return sb.toString();
         } catch (IOException e) {
             Log.d("READ FAILED", e.toString());
