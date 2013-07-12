@@ -3,6 +3,7 @@ package com.andrewyiu.reddittime;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,35 +15,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by andrew on 09/07/13.
+ * Created by andrew on 12/07/13.
  */
-public class PostsFragment extends Fragment {
+public class CommentsFragment extends Fragment {
 
-    ListView postsList;
-    ArrayAdapter<Post> adapter;
+    ListView commentsList;
+    ArrayAdapter<Comment> adapter;
     Handler handler;
 
-    String subreddit;
-    List<Post> posts;
-    PostsHolder postsHolder;
+    String post;
+    List<Comment> comments;
+    CommentsLoader commentsLoader;
 
-    PostsFragment() {
+    CommentsFragment() {
         handler = new Handler();
-        posts = new ArrayList<Post>();
+        comments = new ArrayList<Comment>();
     }
 
-    //Makes a fragment with posts for the activity
-    public static Fragment newInstance(String subreddit) {
-        PostsFragment pf = new PostsFragment();
-        pf.subreddit = subreddit;
-        pf.postsHolder = new PostsHolder(pf.subreddit);
-        return pf;
+    public static Fragment newInstance(String post) {
+        CommentsFragment cf = new CommentsFragment();
+        cf.post = post;
+        cf.commentsLoader = new CommentsLoader(cf.post);
+        return cf;
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.posts, container, false);
-        postsList = (ListView) v.findViewById(R.id.posts_list);
+        View v = inflater.inflate(R.layout.comments, container, false);
+        commentsList = (ListView) v.findViewById(R.id.comments_list);
         return v;
     }
 
@@ -58,12 +58,11 @@ public class PostsFragment extends Fragment {
         initialize();
     }
 
-    //Starts the fragment and makes the custom list adapter
     private void initialize() {
-        if(posts.size() == 0) {
+        if(comments.size() == 0) {
             new Thread() {
                 public void run() {
-                    posts.addAll(postsHolder.fetchPosts());
+                    comments.addAll(commentsLoader.fetchComments());
                     handler.post(new Runnable() {
                         @Override
                         public void run() {
@@ -77,28 +76,27 @@ public class PostsFragment extends Fragment {
         }
     }
 
-    //Makes the custom list adapter to show the score, title, and details
     private void createAdapter() {
         if(getActivity() == null) {
             return;
         }
-        adapter = new ArrayAdapter<Post>(getActivity(), R.layout.post_item, posts) {
+        adapter = new ArrayAdapter<Comment>(getActivity(), R.layout.comment_item, comments) {
             public View getView(int position, View convertView, ViewGroup parent) {
                 if(convertView == null) {
-                    convertView = getActivity().getLayoutInflater().inflate(R.layout.post_item, parent, false);
+                    convertView = getActivity().getLayoutInflater().inflate(R.layout.comment_item, null);
                 }
                 convertView.setMinimumHeight(200);
-                TextView postTitle, postDetails, postScore;
-                postTitle = (TextView) convertView.findViewById(R.id.post_title);
-                postDetails = (TextView) convertView.findViewById(R.id.post_details);
-                postScore = (TextView) convertView.findViewById(R.id.post_score);
-                postTitle.setText(posts.get(position).title);
-                postDetails.setText(posts.get(position).getDetails());
-                postScore.setText(posts.get(position).getScore());
+                TextView commentBody, commentDetails, commentScore;
+                commentBody = (TextView) convertView.findViewById(R.id.comment_body);
+                commentDetails = (TextView) convertView.findViewById(R.id.comment_details);
+                commentScore = (TextView) convertView.findViewById(R.id.comment_score);
+                commentBody.setText(comments.get(position).htmlText);
+                commentDetails.setText(comments.get(position).getDetails());
+                commentScore.setText(comments.get(position).getPoints());
                 return convertView;
             }
         };
-        postsList.setAdapter(adapter);
+        commentsList.setAdapter(adapter);
     }
 
 }
