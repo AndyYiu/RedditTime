@@ -1,5 +1,6 @@
 package com.andrewyiu.reddittime;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -83,7 +84,7 @@ public class PostsFragment extends Fragment {
             return;
         }
         adapter = new ArrayAdapter<Post>(getActivity(), R.layout.post_item, posts) {
-            public View getView(int position, View convertView, ViewGroup parent) {
+            public View getView(final int position, View convertView, ViewGroup parent) {
                 if(convertView == null) {
                     convertView = getActivity().getLayoutInflater().inflate(R.layout.post_item, parent, false);
                 }
@@ -95,6 +96,16 @@ public class PostsFragment extends Fragment {
                 postTitle.setText(posts.get(position).title);
                 postDetails.setText(posts.get(position).getDetails());
                 postScore.setText(posts.get(position).getScore());
+
+                convertView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent i = new Intent(getActivity().getBaseContext(), CommentsActivity.class);
+                        i.putExtra("perma", posts.get(position).permalink);
+                        startActivity(i);
+                    }
+                });
+
                 return convertView;
             }
         };
