@@ -75,7 +75,7 @@ public class MyCache {
             pw.print(data);
             pw.close();
         } catch(Exception e) {
-
+            Log.e("Error", "Could not write to cache");
         }
     }
 

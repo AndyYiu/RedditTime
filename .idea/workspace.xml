@@ -24,16 +24,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="29ac8d38-9de1-47d1-b11d-89496ea6f433" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/RedditTime/src/main/java/com/andrewyiu/reddittime/MyCache.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RedditTime/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/RedditTime/src/main/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RedditTime/src/main/java/com/andrewyiu/reddittime/LoginActivity.java" afterPath="$PROJECT_DIR$/RedditTime/src/main/java/com/andrewyiu/reddittime/LoginActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README" afterPath="$PROJECT_DIR$/README" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RedditTime/src/main/java/com/andrewyiu/reddittime/RemoteData.java" afterPath="$PROJECT_DIR$/RedditTime/src/main/java/com/andrewyiu/reddittime/RemoteData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RedditTime/build/res/all/debug/layout/post_item.xml" afterPath="$PROJECT_DIR$/RedditTime/build/res/all/debug/layout/post_item.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RedditTime/src/main/res/layout/post_item.xml" afterPath="$PROJECT_DIR$/RedditTime/src/main/res/layout/post_item.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RedditTime/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/RedditTime/src/main/res/values/strings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RedditTime/src/main/res/values/strings_activity_login.xml" afterPath="$PROJECT_DIR$/RedditTime/src/main/res/values/strings_activity_login.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RedditTime/build/res/all/debug/values/values.xml" afterPath="$PROJECT_DIR$/RedditTime/build/res/all/debug/values/values.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RedditTime/src/main/java/com/andrewyiu/reddittime/MyCache.java" afterPath="$PROJECT_DIR$/RedditTime/src/main/java/com/andrewyiu/reddittime/MyCache.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="RedditTime.iws" />
@@ -98,10 +89,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="LoginActivity.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="LoginActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/RedditTime/src/main/java/com/andrewyiu/reddittime/LoginActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="63" column="63" selection-start="1901" selection-end="1901" vertical-scroll-proportion="0.5049342" vertical-offset="638" max-vertical-offset="4140">
+            <state line="63" column="63" selection-start="1901" selection-end="1901" vertical-scroll-proportion="0.0" vertical-offset="638" max-vertical-offset="4140">
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#3710#3750#0" expanded="true" />
@@ -126,10 +117,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MyCache.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="MyCache.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/RedditTime/src/main/java/com/andrewyiu/reddittime/MyCache.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="39" column="5" selection-start="1282" selection-end="1282" vertical-scroll-proportion="0.0" vertical-offset="405" max-vertical-offset="1320">
+            <state line="59" column="13" selection-start="1857" selection-end="1857" vertical-scroll-proportion="0.7894737" vertical-offset="405" max-vertical-offset="1320">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -600,6 +591,11 @@
       <created>1373303184240</created>
       <updated>1373303184240</updated>
     </task>
+    <task id="LOCAL-00001" summary="Included caching on external memory and login">
+      <created>1373603489955</created>
+      <updated>1373603489955</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -625,12 +621,12 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1307364" sideWeight="0.6730564" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.399361" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.328" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -816,18 +812,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/RedditTime/src/main/java/com/andrewyiu/reddittime/MyCache.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="5" selection-start="1282" selection-end="1282" vertical-scroll-proportion="0.0" vertical-offset="405" max-vertical-offset="1320">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/RedditTime/src/main/java/com/andrewyiu/reddittime/LoginActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="63" selection-start="1901" selection-end="1901" vertical-scroll-proportion="0.5049342" vertical-offset="638" max-vertical-offset="4140">
+        <state line="63" column="63" selection-start="1901" selection-end="1901" vertical-scroll-proportion="0.0" vertical-offset="638" max-vertical-offset="4140">
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#3710#3750#0" expanded="true" />
@@ -835,6 +822,15 @@
             <element signature="e#4138#4178#0" expanded="true" />
             <element signature="e#4613#4647#0" expanded="true" />
             <element signature="e#8360#8404#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RedditTime/src/main/java/com/andrewyiu/reddittime/MyCache.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="59" column="13" selection-start="1857" selection-end="1857" vertical-scroll-proportion="0.7894737" vertical-offset="405" max-vertical-offset="1320">
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
