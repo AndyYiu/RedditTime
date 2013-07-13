@@ -63,6 +63,13 @@
                 android:paddingRight="32dp"
                 android:layout_gravity="right" />
 
+            <Button android:id="@+id/bypass_button"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginTop="16dp"
+                    android:layout_gravity="left"
+                    android:background="@color/white" />
+
         </LinearLayout>
 
     </ScrollView>

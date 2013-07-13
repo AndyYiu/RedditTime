@@ -83,6 +83,15 @@ public class LoginActivity extends Activity {
                 attemptLogin();
             }
         });
+
+        findViewById(R.id.bypass_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(i);
+                finish();
+            }
+        });
     }
 
 

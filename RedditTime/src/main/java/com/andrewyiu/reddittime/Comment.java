@@ -9,7 +9,7 @@ public class Comment {
     int level;
 
     String getDetails() {
-        String details = author + " posted " + postedOn + " ago.";
+        String details = "Posted by " + author;
         return details;
     }
 

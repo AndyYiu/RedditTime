@@ -3,11 +3,12 @@ package com.andrewyiu.reddittime;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -86,6 +87,8 @@ public class CommentsFragment extends Fragment {
                     convertView = getActivity().getLayoutInflater().inflate(R.layout.comment_item, null);
                 }
                 convertView.setMinimumHeight(200);
+                LinearLayout ll = (LinearLayout) convertView.findViewById(R.id.comment_block);
+                ll.setPadding(30 * (comments.get(position).level), 0, 0, 0);
                 TextView commentBody, commentDetails, commentScore;
                 commentBody = (TextView) convertView.findViewById(R.id.comment_body);
                 commentDetails = (TextView) convertView.findViewById(R.id.comment_details);

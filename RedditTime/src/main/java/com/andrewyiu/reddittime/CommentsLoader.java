@@ -26,6 +26,7 @@ public class CommentsLoader {
             comment.author = data.getString("author");
             comment.points = (data.getInt("ups") - data.getInt("downs")) + "";
             comment.postedOn = new Date((long) data.getDouble("created_utc")).toString();
+            comment.level = level;
         } catch(Exception e) {
             Log.d("Error", "Unable to parse comment :" + e);
         }
@@ -44,7 +45,7 @@ public class CommentsLoader {
             Comment comment = loadComment(data, level);
             if(comment.author != null) {
                 comments.add(comment);
-                addReplies(comments, data, level +1);
+                addReplies(comments, data, (level + 1));
             }
         }
     }
